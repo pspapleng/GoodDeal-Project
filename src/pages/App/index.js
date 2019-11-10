@@ -1,9 +1,10 @@
 import React from "react";
-import Example from '../../components/example'
+import Appbar from "../../components/Appbar";
 
 export default () => {
-    return (<div>
-        Hello
-        <Example/>
-    </div>)
+  return (
+    <div>
+      <Appbar />
+    </div>
+  );
 };
