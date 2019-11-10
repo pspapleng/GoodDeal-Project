@@ -13,10 +13,12 @@ const useStyles = makeStyles(theme => ({
   },
   goodText: {
     color: "white",
+    fontWeight: 600,
     fontSize: 50
   },
   dealText: {
     color: "#fbc132",
+    fontWeight: 600,
     fontSize: 50
   }
 }));
