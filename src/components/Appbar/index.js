@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(theme => ({
+let useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
   },
@@ -24,14 +24,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default () => {
-  const mystyle = useStyles();
+  let classes = useStyles();
 
   return (
-    <div className={mystyle.root}>
-      <AppBar position="fixed" className={mystyle.bar}>
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.bar}>
         <Toolbar>
-          <Typography className={mystyle.goodText}>Good</Typography>
-          <Typography className={mystyle.dealText}>Deal</Typography>
+          <Typography className={classes.goodText}>Good</Typography>
+          <Typography className={classes.dealText}>Deal</Typography>
         </Toolbar>
       </AppBar>
     </div>
