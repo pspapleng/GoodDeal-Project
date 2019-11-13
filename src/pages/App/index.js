@@ -1,10 +1,10 @@
 import React from "react";
-import Appbar from "../../components/Appbar";
+import Cardbyjub from "../../components/cardbyjub";
 
 export default () => {
   return (
     <div>
-      <Appbar />
+      <Cardbyjub />
     </div>
   );
 };
