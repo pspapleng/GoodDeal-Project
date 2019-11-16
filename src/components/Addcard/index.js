@@ -17,6 +17,11 @@ const useStyles = makeStyles(theme => ({
     width: 120,
     height: 120,
     color: "#3d458d",
+    top: "auto",
+    left: "auto",
+    bottom: 360,
+    right: 760,
+    position: "fixed",
   },
   
   extendedIcon: {
@@ -36,7 +41,7 @@ export default function SimpleCard() {
   const classes = useStyles();
 
   return (
-    //grid ทำให้กล่องไปอยู๋ชิดริมขวาของหนน้า ใน box คือโค้ดความหนาของขอบ สีขอบ สีพื้นหลังของการ์ด คสามสูงแล้วก็ความกว้าง
+    //grid ทำให้กล่องไปอยู่ชิดริมขวาของหนน้า ใน box คือโค้ดความหนาของขอบ สีขอบ สีพื้นหลังของการ์ด ความสูงแล้วก็ความกว้าง
     <Grid 
     container
     direction="row"
