@@ -8,8 +8,6 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles(theme => ({
   card: {
     minHeight: 100,
-    border: 10,
-    position: "fixed",
   },
   pos: {
     marginBottom: 12,
@@ -19,11 +17,6 @@ const useStyles = makeStyles(theme => ({
     width: 120,
     height: 120,
     color: "#3d458d",
-    top: "auto",
-    left: "auto",
-    bottom: 320,
-    right: 48,
-    position: "fixed",
   },
   
   extendedIcon: {
@@ -47,10 +40,9 @@ export default function SimpleCard() {
     <Grid 
     container
     direction="row"
-    justify="flex-end"
-    position="fixed">
+    justify="flex-end">
       <Card>
-        <Box align="center" jusify="center" justifyItems="fixed" border={3} borderColor="#3d458d" bgcolor="#eaebef" height="720px" width="200px" position="relative">
+        <Box borderColor="#3d458d" bgcolor="#eaebef" height="720px" width="1520px">
         <AddIcon className={classes.icon} />
         </Box>
       </Card>
