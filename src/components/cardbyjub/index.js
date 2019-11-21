@@ -5,6 +5,10 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import {withStyles} from '@material-ui/core/styles';
+import Add from "@material-ui/icons/Add";
+import IconButton from "@material-ui/core/IconButton";
+import Delete from "@material-ui/icons/Delete";
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 
 
@@ -19,7 +23,7 @@ const ValidationTextField = withStyles({
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: '23vw',
+    width: '24vw',
     borderColor: '#3d458d',
     variant: 'outlined',
     color: 'primary',
@@ -66,7 +70,7 @@ const useStyles = makeStyles(theme => ({
 const currencies = [
   {
     value: "฿",
-    label: "Bath"
+    label: "Baht"
   },
   {
     value: "%",
@@ -74,13 +78,21 @@ const currencies = [
   }
 ];
 
-export default function SimpleCard() {
+export default function SimpleCard({ deleteCallback }) {
   const classes = useStyles();
 
-  const [currency, setCurrency] = React.useState("Bath");
+  const [currency, setCurrency] = React.useState("Baht");
 
   const handleChange = event => {
     setCurrency(event.target.value);
+  };
+
+  let [premiumArr, setPremium] = React.useState([0]);
+  let handleAdd = () => {
+    let clone = [...premiumArr];
+    let lstdx = clone.length - 1;
+    clone.push(clone[lstdx] + 1);
+    setPremium(clone);
   };
 
   return (
@@ -102,6 +114,9 @@ export default function SimpleCard() {
             label="Cost"
             margin="normal"
             variant="outlined"
+            InputProps={{
+              startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+            }}
           />
         </div>
         <div className={classes.container}>
@@ -142,6 +157,9 @@ export default function SimpleCard() {
             label="Shipping"
             margin="normal"
             variant="outlined"
+            InputProps={{
+              startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+            }}
           />
         </div>
         <div className={classes.container}>
@@ -151,7 +169,16 @@ export default function SimpleCard() {
             label="Premium"
             margin="normal"
             variant="outlined"
-          />
+            InputProps={{
+              startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+            }}
+            />
+          <IconButton onClick={handleAdd}>
+            <Add></Add>
+          </IconButton>
+          <IconButton onClick={deleteCallback}>
+            <Delete></Delete>
+          </IconButton>
         </div>
         
         <form className={classes.root} noValidate>
@@ -162,8 +189,13 @@ export default function SimpleCard() {
               variant="outlined"
               id="validation-outlined-input"
               margin="normal"
+              InputProps={{
+                startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+              }}
             />
           </form>
+
+          
 
       </CardContent>
     </Card>
