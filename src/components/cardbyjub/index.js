@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import {withStyles} from '@material-ui/core/styles';
-
+import Input from '@material-ui/core/Input';
 
 
 const ValidationTextField = withStyles({
@@ -78,9 +78,44 @@ export default function SimpleCard() {
   const classes = useStyles();
 
   const [currency, setCurrency] = React.useState("Bath");
+  const [values, setValues] = React.useState({
+    name: '',
+    cost: 0,
+    discount: 0,
+    currency: 'Bath',
+    shipping: 0,
+    premium: '',
+    total: 0,
+  });
 
   const handleChange = event => {
     setCurrency(event.target.value);
+    if (event.target.value == "%") {
+      setValues({...values,
+        total: (values.cost*(values.cost-values.discount))/100 + values.shipping});
+    }
+    else {
+      setValues({...values,
+        total: values.cost - values.discount + values.shipping});
+    }
+  };
+
+  const handleCost = event => {
+    setValues({...values, 
+      cost: parseFloat(event.target.value),
+      total: parseFloat(event.target.value) - values.discount + values.shipping});
+  };
+
+  const handleDiscount = event => {
+    setValues({...values, 
+      discount: parseFloat(event.target.value),
+      total: values.cost - parseFloat(event.target.value) + values.shipping});
+  };
+
+  const handleShipping = event => {
+    setValues({...values, 
+      shipping: parseFloat(event.target.value),
+      total: values.cost - values.discount + parseFloat(event.target.value)});
   };
 
   return (
@@ -102,6 +137,7 @@ export default function SimpleCard() {
             label="Cost"
             margin="normal"
             variant="outlined"
+            onChange={handleCost}
           />
         </div>
         <div className={classes.container}>
@@ -111,6 +147,7 @@ export default function SimpleCard() {
             label="Discount"
             margin="normal"
             variant="outlined"
+            onChange={handleDiscount}
           />
 
           <TextField
@@ -142,6 +179,7 @@ export default function SimpleCard() {
             label="Shipping"
             margin="normal"
             variant="outlined"
+            onChange={handleShipping}
           />
         </div>
         <div className={classes.container}>
@@ -157,6 +195,7 @@ export default function SimpleCard() {
         <form className={classes.root} noValidate>
             <ValidationTextField
               className={classes.margin}
+              value={values.total}
               label="Total"
               required
               variant="outlined"
