@@ -1,51 +1,40 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
-import {withStyles} from '@material-ui/core/styles';
 import Add from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Input from '@material-ui/core/Input';
+import InputAdornment from "@material-ui/core/InputAdornment";
+import Input from "@material-ui/core/Input";
 
-
-
-const ValidationTextField = withStyles({
+let ValidationTextField = withStyles({
   root: {
-    '& input:invalid + fieldset': {
-      borderColor: '#3d458d',
-      borderWidth: 3,
+    "& input:invalid + fieldset": {
+      borderColor: "#3d458d",
+      borderWidth: 3
     }
   }
 })(TextField);
 
-const useStyles = makeStyles(theme => ({
+let useStyles = makeStyles(theme => ({
   card: {
-    width: '24vw',
-    borderColor: '#3d458d',
-    variant: 'outlined',
-    color: 'primary',
-    border: '8px solid'
+    width: "28vw",
+    borderColor: "#3d458d",
+    border: "8px solid"
   },
   bullet: {
     display: "inline-block",
-    margin: "0 2px",
+    margin: "2px",
     transform: "scale(0.😎"
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
   },
   container: {
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column"
-
   },
   textField: {
     marginLeft: theme.spacing(2),
@@ -65,10 +54,9 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200
   }
-  
 }));
 
-const currencies = [
+let currencies = [
   {
     value: "฿",
     label: "Baht"
@@ -80,46 +68,57 @@ const currencies = [
 ];
 
 export default function SimpleCard({ deleteCallback }) {
-  const classes = useStyles();
-  const [currency, setCurrency] = React.useState("Baht");
-  const [values, setValues] = React.useState({
-    name: '',
+  let classes = useStyles();
+  let [currency, setCurrency] = React.useState("Baht");
+  let [values, setValues] = React.useState({
+    name: "",
     cost: 0,
     discount: 0,
-    currency: 'Bath',
+    currency: "Bath",
     shipping: 0,
-    premium: '',
-    total: 0,
+    premium: "",
+    total: 0
   });
 
-  const handleChange = event => {
+  let handleChange = event => {
     setCurrency(event.target.value);
     if (event.target.value == "%") {
-      setValues({...values,
-        total: (values.cost*(values.cost-values.discount))/100 + values.shipping});
-    }
-    else {
-      setValues({...values,
-        total: values.cost - values.discount + values.shipping});
+      setValues({
+        ...values,
+        total:
+          (values.cost * (values.cost - values.discount)) / 100 +
+          values.shipping
+      });
+    } else {
+      setValues({
+        ...values,
+        total: values.cost - values.discount + values.shipping
+      });
     }
   };
 
-  const handleCost = event => {
-    setValues({...values, 
+  let handleCost = event => {
+    setValues({
+      ...values,
       cost: parseFloat(event.target.value),
-      total: parseFloat(event.target.value) - values.discount + values.shipping});
+      total: parseFloat(event.target.value) - values.discount + values.shipping
+    });
   };
 
-  const handleDiscount = event => {
-    setValues({...values, 
+  let handleDiscount = event => {
+    setValues({
+      ...values,
       discount: parseFloat(event.target.value),
-      total: values.cost - parseFloat(event.target.value) + values.shipping});
+      total: values.cost - parseFloat(event.target.value) + values.shipping
+    });
   };
 
-  const handleShipping = event => {
-    setValues({...values, 
+  let handleShipping = event => {
+    setValues({
+      ...values,
       shipping: parseFloat(event.target.value),
-      total: values.cost - values.discount + parseFloat(event.target.value)});
+      total: values.cost - values.discount + parseFloat(event.target.value)
+    });
   };
 
   let [premiumArr, setPremium] = React.useState([0]);
@@ -150,13 +149,15 @@ export default function SimpleCard({ deleteCallback }) {
             margin="normal"
             variant="outlined"
             InputProps={{
-              startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+              startAdornment: (
+                <InputAdornment position="start">฿</InputAdornment>
+              )
             }}
             onChange={handleCost}
           />
         </div>
         <div className={classes.container}>
-        <TextField
+          <TextField
             id="outlined-basic"
             className={classes.textField}
             label="Discount"
@@ -195,7 +196,9 @@ export default function SimpleCard({ deleteCallback }) {
             margin="normal"
             variant="outlined"
             InputProps={{
-              startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+              startAdornment: (
+                <InputAdornment position="start">฿</InputAdornment>
+              )
             }}
             onChange={handleShipping}
           />
@@ -208,9 +211,11 @@ export default function SimpleCard({ deleteCallback }) {
             margin="normal"
             variant="outlined"
             InputProps={{
-              startAdornment: <InputAdornment position="start">฿</InputAdornment>,
+              startAdornment: (
+                <InputAdornment position="start">฿</InputAdornment>
+              )
             }}
-            />
+          />
           <IconButton onClick={handleAdd}>
             <Add></Add>
           </IconButton>
@@ -218,24 +223,23 @@ export default function SimpleCard({ deleteCallback }) {
             <Delete></Delete>
           </IconButton>
         </div>
-        
+
         <form className={classes.root} noValidate>
-            <ValidationTextField
-              className={classes.margin}
-              value={values.total}
-              label="Total"
-              required
-              variant="outlined"
-              id="validation-outlined-input"
-              margin="normal"
-              InputProps={{
-                startAdornment: <InputAdornment position="start">฿</InputAdornment>,
-              }}
-            />
-          </form>
-
-          
-
+          <ValidationTextField
+            className={classes.margin}
+            value={values.total}
+            label="Total"
+            required
+            variant="outlined"
+            id="validation-outlined-input"
+            margin="normal"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">฿</InputAdornment>
+              )
+            }}
+          />
+        </form>
       </CardContent>
     </Card>
   );
