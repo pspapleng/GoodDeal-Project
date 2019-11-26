@@ -8,7 +8,7 @@ import AddIcon from "@material-ui/icons/Add";
 let useStyles = makeStyles(theme => ({
   //โค้ดของการ์ด กว้าง สูง ขนาดขอบ สีขอบ จัดเครื่องบวกให้อยู่กลาง
   card: {
-    width: "28vw",
+    width: "25vw",
     height: "33.25vw",
     border: "8px solid",
     borderColor: "#3d458d",

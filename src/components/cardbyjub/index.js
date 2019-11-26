@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Add from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
-import Delete from "@material-ui/icons/Delete";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Input from "@material-ui/core/Input";
 
@@ -22,7 +22,7 @@ let ValidationTextField = withStyles({
 
 let useStyles = makeStyles(theme => ({
   card: {
-    width: "28vw",
+    width: "25vw",
     borderColor: "#3d458d",
     border: "8px solid"
   },
@@ -240,6 +240,9 @@ export default function SimpleCard({ deleteCallback }) {
             }}
           />
         </form>
+        <IconButton>
+          <DeleteForeverIcon />
+        </IconButton>
       </CardContent>
     </Card>
   );
