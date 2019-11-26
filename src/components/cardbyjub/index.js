@@ -7,6 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Add from "@material-ui/icons/Add";
 import IconButton from "@material-ui/core/IconButton";
+import Delete from "@material-ui/icons/Delete";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import Input from "@material-ui/core/Input";
@@ -25,6 +26,22 @@ let useStyles = makeStyles(theme => ({
     width: "25vw",
     borderColor: "#3d458d",
     border: "8px solid"
+  },
+  root: {
+    "& label.Mui-focused": {
+      color: "#3d458d"
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#fbc132"
+      },
+      "&:hover fieldset": {
+        borderColor: "#fbc132"
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#3d458d"
+      }
+    }
   },
   bullet: {
     display: "inline-block",
@@ -69,6 +86,7 @@ let currencies = [
 
 export default function SimpleCard({ deleteCallback }) {
   let classes = useStyles();
+
   let [currency, setCurrency] = React.useState("Baht");
   let [values, setValues] = React.useState({
     name: "",
@@ -131,7 +149,7 @@ export default function SimpleCard({ deleteCallback }) {
 
   return (
     <Card className={classes.card}>
-      <CardContent>
+      <CardContent className={classes.root}>
         <div className={classes.container}>
           <TextField
             id="outlined-basic"
@@ -223,7 +241,6 @@ export default function SimpleCard({ deleteCallback }) {
             <Delete></Delete>
           </IconButton>
         </div>
-
         <form className={classes.root} noValidate>
           <ValidationTextField
             className={classes.margin}
@@ -241,7 +258,7 @@ export default function SimpleCard({ deleteCallback }) {
           />
         </form>
         <IconButton>
-          <DeleteForeverIcon />
+          <DeleteForeverIcon fontSize="large" />
         </IconButton>
       </CardContent>
     </Card>
