@@ -7,7 +7,6 @@ export default () => {
   return (
     <div>
       <Card></Card>
-      <Addcard></Addcard>
     </div>
   );
 };
