@@ -1,17 +1,19 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/card";
 import AddIcon from "@material-ui/icons/Add";
+import { textAlign } from "@material-ui/system";
+import { Grid, CardActionArea, CardContent } from "@material-ui/core";
 
 let useStyles = makeStyles(theme => ({
   //โค้ดของการ์ด กว้าง สูง ขนาดขอบ สีขอบ จัดเครื่องบวกให้อยู่กลาง
   card: {
-    width: "25vw",
-    height: "33.25vw",
+    width: "20vw",
+    height: "33vw",
     border: "8px solid",
     borderColor: "#3d458d",
+    borderRadius: 15,
     textAlign: "center"
   },
   //โค้ดของเครื่องหมายบวก ขนาด สี ตำแหน่งห่างจากด้านบน
@@ -19,18 +21,25 @@ let useStyles = makeStyles(theme => ({
     width: 120,
     height: 120,
     color: "#3d458d",
-    marginTop: "11vw"
+    marginTop: "13vw"
+  },
+    action: {
+    flex: "1 1 auto"
   }
 }));
 
-export default function SimpleCard() {
-  let classes = useStyles();
+export default function SimpleCard({ clickCallback }) {
+  const classes = useStyles();
 
   return (
     <Grid justify="center">
-      <Card className={classes.card}>
-        <AddIcon className={classes.icon} />
-      </Card>
+      <CardActionArea className={classes.action} onClick={clickCallback}>
+        <Card className={classes.card}>
+          <CardContent>
+            <AddIcon className={classes.icon} />
+          </CardContent>
+        </Card>
+      </CardActionArea>
     </Grid>
   );
 }

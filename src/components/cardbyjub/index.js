@@ -23,9 +23,11 @@ let ValidationTextField = withStyles({
 
 let useStyles = makeStyles(theme => ({
   card: {
-    width: "25vw",
+    width: "20vw",
+    height: "33vw",
     borderColor: "#3d458d",
-    border: "8px solid"
+    border: "8px solid",
+    borderRadius: 15
   },
   root: {
     "& label.Mui-focused": {
@@ -39,7 +41,7 @@ let useStyles = makeStyles(theme => ({
         borderColor: "#fbc132"
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#3d458d"
+        borderColor: "#fbc132"
       }
     }
   },
@@ -76,11 +78,11 @@ let useStyles = makeStyles(theme => ({
 let currencies = [
   {
     value: "฿",
-    label: "Baht"
+    label: "฿"
   },
   {
     value: "%",
-    label: "Percent"
+    label: "%"
   }
 ];
 
@@ -155,15 +157,17 @@ export default function SimpleCard({ deleteCallback }) {
             id="outlined-basic"
             className={classes.textField}
             label="Name"
+            fullWidth
             margin="normal"
             variant="outlined"
           />
         </div>
         <div className={classes.container}>
           <TextField
-            id="outlined-basic"
+            id="outlined-full-width"
             className={classes.textField}
             label="Cost"
+            fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
@@ -208,9 +212,10 @@ export default function SimpleCard({ deleteCallback }) {
 
         <div className={classes.container}>
           <TextField
-            id="outlined-basic"
+            id="outlined-full-width"
             className={classes.textField}
             label="Shipping"
+            fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
@@ -249,6 +254,7 @@ export default function SimpleCard({ deleteCallback }) {
             required
             variant="outlined"
             id="validation-outlined-input"
+            fullWidth
             margin="normal"
             InputProps={{
               startAdornment: (
