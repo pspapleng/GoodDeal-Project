@@ -21,6 +21,11 @@ let useStyles = makeStyles(theme => ({
     color: "#fbc132",
     fontWeight: 600,
     fontSize: 50
+  },
+  moreText: {
+    color: "white",
+    fontWeight: 600,
+    fontSize: 40
   }
 }));
 
@@ -32,7 +37,8 @@ export default () => {
       <AppBar position="fixed" className={classes.bar}>
         <Toolbar>
           <Typography className={classes.goodText}>Good</Typography>
-          <Typography className={classes.dealText}>Deal</Typography>
+          <Typography className={classes.dealText}>Deal *</Typography>
+          <Typography className={classes.moreText}>Choose the best one for you</Typography>
         </Toolbar>
       </AppBar>
     </div>
