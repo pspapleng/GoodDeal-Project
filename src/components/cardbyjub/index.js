@@ -10,7 +10,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Delete from "@material-ui/icons/Delete";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import Input from "@material-ui/core/Input";
 
 let ValidationTextField = withStyles({
   root: {
@@ -23,8 +22,7 @@ let ValidationTextField = withStyles({
 
 let useStyles = makeStyles(theme => ({
   card: {
-    width: "20vw",
-    height: "33vw",
+    width: "22vw",
     borderColor: "#3d458d",
     border: "8px solid",
     borderRadius: 15
@@ -66,9 +64,6 @@ let useStyles = makeStyles(theme => ({
   },
   withoutLabel: {
     marginTop: theme.spacing(2)
-  },
-  textField: {
-    width: 200
   },
   menu: {
     width: 200
