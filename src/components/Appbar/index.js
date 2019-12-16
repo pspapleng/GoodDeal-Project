@@ -34,7 +34,7 @@ export default () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={classes.bar}>
+      <AppBar  position="static" className={classes.bar}>
         <Toolbar>
           <Typography className={classes.goodText}>Good</Typography>
           <Typography className={classes.dealText}>Deal *</Typography>

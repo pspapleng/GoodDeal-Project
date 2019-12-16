@@ -9,7 +9,7 @@ let useStyles = makeStyles(theme => ({
   //โค้ดของการ์ด กว้าง สูง ขนาดขอบ สีขอบ จัดเครื่องบวกให้อยู่กลาง
   card: {
     width: "22vw",
-    height: "34vw",
+    height: "80vh",
     border: "8px solid",
     borderColor: "#3d458d",
     borderRadius: 15,
