@@ -1,39 +1,17 @@
-name: Build and Deploy
-on:
-  push:
-    branches:
-      - master
-
+name: CI
+on: [push]
 jobs:
   build:
-    name: Build
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Install Dependencies
-        run: npm install
-      - name: Build
-        run: npm run build-prod
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
+      - uses: actions/checkout@v1
+      - uses: borales/actions-yarn@v2.0.0
         with:
-          name: dist
-          path: dist
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-      - name: Download Artifact
-        uses: actions/download-artifact@master
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
         with:
-          name: dist
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+          cmd: build # will run `yarn build` command
+      - uses: borales/actions-yarn@v2.0.0
         with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          cmd: test # will run `yarn test` command
