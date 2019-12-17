@@ -5,8 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Card from "../../components/cardbyjub";
 import Addcard from "../../components/Addcard";
 import AppBar from "../../components/Appbar";
-import Simplecard from "../../components/cardbyjub-copy";
-import { set } from "store2";
+
 let useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -16,7 +15,7 @@ let useStyles = makeStyles(theme => ({
 }));
 
 export default function SpacingGrid() {
-  const [list, setList] = React.useState([0, 1]);
+  const [list, setList] = React.useState([0]);
   let classes = useStyles();
 
   let newCard = e => {
