@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import Card from "../../components/cardbyjub";
 import Addcard from "../../components/Addcard";
 import AppBar from "../../components/Appbar";
-
 let useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -21,13 +20,12 @@ export default function SpacingGrid() {
   let newCard = e => {
     e.preventDefault();
     let clonelist = [...list];
-    clonelist.push(new Date().getTime());
+    clonelist.push(clonelist[clonelist.length - 1] + 1);
     setList(clonelist);
   };
 
   let removeCard = e => {
     setList(list.filter(el => el !== e));
-    console.log(list);
   };
   return (
     <div>
