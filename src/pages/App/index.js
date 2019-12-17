@@ -14,7 +14,7 @@ let useStyles = makeStyles(theme => ({
 }));
 
 export default function SpacingGrid() {
-  const [list, setList] = React.useState([0]);
+  const [list, setList] = React.useState([0, 1]);
   let classes = useStyles();
 
   let newCard = e => {
