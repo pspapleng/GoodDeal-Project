@@ -105,6 +105,7 @@ choco install yarn
 
 ### Installation
 
+1. Clone the repo
 
 ```sh
 git clone https://github.com/pspapleng/GoodDeal-Project.git
