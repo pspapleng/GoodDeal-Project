@@ -358,6 +358,7 @@ export default function SimpleCard({ deleteCallback }) {
             id="outlined-basic"
             className={classes.textField}
             label="Premium"
+            fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
