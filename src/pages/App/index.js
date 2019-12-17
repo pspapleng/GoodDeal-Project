@@ -6,6 +6,7 @@ import Card from "../../components/cardbyjub";
 import Addcard from "../../components/Addcard";
 import AppBar from "../../components/Appbar";
 import Simplecard from "../../components/cardbyjub-copy";
+import { set } from "store2";
 let useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -21,12 +22,13 @@ export default function SpacingGrid() {
   let newCard = e => {
     e.preventDefault();
     let clonelist = [...list];
-    clonelist.push(clonelist[clonelist.length - 1] + 1);
+    clonelist.push(new Date().getTime());
     setList(clonelist);
   };
 
   let removeCard = e => {
     setList(list.filter(el => el !== e));
+    console.log(list);
   };
   return (
     <div>
